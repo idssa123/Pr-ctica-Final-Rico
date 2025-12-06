@@ -23,9 +23,9 @@ public class PartidoService {
             .collect(Collectors.toList());
     }
     
-    public PartidoDTO obtenerPorId(Integer id) {
+    public Optional<PartidoDTO> obtenerPorId(Integer id) {
         Optional<Partido> partido = partidoRepository.findById(id);
-        return partido.map(this::convertirADTO).orElse(null);
+        return partido.map(this::convertirADTO);
     }
     
     public PartidoDTO crear(Partido partido) {
@@ -52,13 +52,19 @@ public class PartidoService {
     }
     
     public List<PartidoDTO> obtenerPorEquipo(Integer equipoId) {
-        return partidoRepository.findByEquipoId(equipoId).stream()
+        return partidoRepository.buscarPartidosPorEquipo(equipoId).stream()
             .map(this::convertirADTO)
             .collect(Collectors.toList());
     }
     
     public List<PartidoDTO> obtenerPorFecha(LocalDate fecha) {
         return partidoRepository.findByFecha(fecha).stream()
+            .map(this::convertirADTO)
+            .collect(Collectors.toList());
+    }
+
+    public List<PartidoDTO> obtenerPorCompeticion(String competicion) {
+        return partidoRepository.findByCompeticion(competicion).stream()
             .map(this::convertirADTO)
             .collect(Collectors.toList());
     }

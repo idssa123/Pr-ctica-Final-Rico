@@ -22,9 +22,9 @@ public class EquipoService {
             .collect(Collectors.toList());
     }
     
-    public EquipoDTO obtenerPorId(Integer id) {
+    public Optional<EquipoDTO> obtenerPorId(Integer id) {
         Optional<Equipo> equipo = equipoRepository.findById(id);
-        return equipo.map(this::convertirADTO).orElse(null);
+        return equipo.map(this::convertirADTO);
     }
     
     public EquipoDTO crear(Equipo equipo) {

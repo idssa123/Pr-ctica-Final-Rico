@@ -26,9 +26,9 @@ public class JugadorService {
             .collect(Collectors.toList());
     }
     
-    public JugadorDTO obtenerPorId(Integer id) {
+    public Optional<JugadorDTO> obtenerPorId(Integer id) {
         Optional<Jugador> jugador = jugadorRepository.findById(id);
-        return jugador.map(this::convertirADTO).orElse(null);
+        return jugador.map(this::convertirADTO);
     }
     
     public JugadorDTO crear(Jugador jugador) {
