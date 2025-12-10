@@ -1,14 +1,15 @@
 package com.rcdcoruna.service;
 
-import com.rcdcoruna.dto.EquipoDTO;
-import com.rcdcoruna.model.Equipo;
-import com.rcdcoruna.repository.EquipoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.rcdcoruna.dto.EquipoDTO;
+import com.rcdcoruna.model.Equipo;
+import com.rcdcoruna.repository.EquipoRepository;
 
 @Service
 public class EquipoService {
